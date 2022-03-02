@@ -1,0 +1,463 @@
+/* 
+作者：陳嬿如 
+日期：2018.12.15 
+版本： 
+專題名稱：超級計算器 
+專題簡介：利用模組化及函數，迴圈等概念，設計出多功能的實用計算器 
+授權條款 – 創用cc( http://creativecommons.tw/explore) 
+Due Date: 2018/12/23 
+*/ 
+#include <iostream> 
+#include<cmath>
+
+
+using namespace std; 
+//歡迎 
+void welcome() 
+{ 
+ cout << "♕♕♕♕♕ Welcome to super calculator ♕♕♕♕♕"<<endl;  cout <<"(當執行完一個計算器後，輸入一個不在選單上的數字以結束此程式)"<<endl;  cout <<" 請按enter繼續"<<endl; 
+ cin.get(); 
+return; 
+} 
+//主菜單 
+void menu() 
+{ 
+ cout<<endl; 
+ cout<<"☆ choose what you want to do ☆"<<endl<<endl;  cout<<"�� �� �� �� �� �� �� �� �� �� �� �� �� �� �� �� �� ���� �� �� �� �� �� �� �� �� "<<endl<<"�� 
+��"<<endl; 
+ cout<<"�� ☆ 1=> 面積計算 
+��"<<endl; 
+ cout<<"�� ☆ 2=> 平面座標距離計算 ��"<<endl;  cout<<"�� ☆ 3=> 運動學計算 ��"<<endl;  cout<<"�� ☆ 4=> 熱力計算 ��"<<endl;  cout<<"�� ☆ 5=> 力學計算 ��"<<endl;  cout<<"�� ☆ 6=> 溫標轉換 ��"<<endl;  cout<<"�� ☆ 7=> BMI轉換 
+��"<<endl; 
+ cout<<"�� ☆ 8=> 數字總和 ��"<<endl;  cout<<"�� ☆ 9=> 質能互換 ��"<<endl;  cout<<"�� ☆ 10=> 成績計算器 ��"<<endl;  cout<<"�� ☆ 11=> 因數計算器 ��"<<endl; 
+ cout<<"�� 
+��"<<endl<<"�� �� �� �� �� �� �� �� �� �� �� �� �� �� �� �� �� ���� �� �� �� �� �� �� �� �� ";
+ cout << endl<<endl <<"我想要:"; 
+return ; 
+} 
+//第一選單 
+void A1() 
+{ 
+ cout <<endl; 
+ cout<<"��面積計算器��"; 
+ cout<<endl<<endl; 
+ cout<<"��1 正方形"<<endl; 
+ cout<<"��2 長方形"<<endl; 
+ cout<<"��3 三角形"<<endl; 
+ cout<<"��4 橢圓形"<<endl; 
+ cout<<"��5 梯形" <<endl; 
+ cout<<"��6 圓形" <<endl; 
+ cout<<"��7 扇形"<<endl; 
+ return; 
+} 
+//第三選單 
+void A3() 
+{ 
+ cout<<endl; 
+ cout<<"��運動學計算器��"<<endl<<endl;  cout<<"請輸入你想計算的量值"<<endl;  cout<<"��1=>速度"<<endl; 
+ cout<<"��2=>位移"<<endl; 
+ cout<<"��3=>加速度"<<endl; 
+ cout<<"��4=>時間"<<endl; 
+return; 
+} 
+//第五選單 
+void A5() 
+{
+ cout <<endl; 
+ cout<<"��力學計算器��"<<endl<<endl;  cout<<"請輸入你想計算的量值"<<endl;  cout<<"��1=>力(牛頓)"<<endl; 
+ cout<<"��2=>質量"<<endl; 
+ cout<<"��3=>加速度"<<endl; 
+return ; 
+} 
+//第六選單 
+void A6() 
+{ 
+ cout<<endl; 
+ cout<<"��溫標轉換器��"<<endl<<endl;  cout<<"請輸入你想轉換的方式"<<endl;  cout<<"��1=>華氏到攝氏"<<endl;  cout<<"��2=>攝氏到華氏"<<endl; 
+return ; 
+} 
+//第一選單模組 
+double b1(double a) 
+{ 
+return a*a; 
+} 
+double b2(double a,double b ) { 
+return a*b; 
+} 
+double b3(double a,double b) 
+{ 
+ return (a*b)/2; 
+} 
+double b4(double s,double l,double pi) { 
+return s * l * pi; 
+}
+double b5(double up , double down,double h) { 
+return (up + down) * h /2; 
+} 
+double b6(double r,double pi) 
+{ 
+return r*r*pi; 
+} 
+double b7(double r,double pi,double q) 
+{ 
+return r * r * pi * (double)q/360; 
+} 
+//第二選單模組 
+double A2(double x1,double y1 ,double x2, double y2) { 
+return sqrt(pow((x1 - x2),2) +pow((y1 - y2),2)); } 
+//第三選單模組 
+double C1(double v0,double a,double t) 
+{ 
+return v0 + a * t ; 
+} 
+double C2(double v, double v0,double t) { 
+return (v+v0)/2*t; 
+} 
+double C3(double v,double v0,double t) 
+{ 
+return (v-v0)/t; 
+} 
+double C4(double v,double v0,double a) 
+{ 
+return (v-v0)/a; 
+}
+//第四選單模組 
+double A4(double m,double s, double dt) { 
+return m * s * dt; 
+} 
+//第五選單模組 
+double D1(double m, double a) 
+{ 
+return m * a ; 
+} 
+double D2(double f,double a) 
+{ 
+return f / a; 
+} 
+double D3(double f, double m) 
+{ 
+return f / m ; 
+} 
+//第六選單模組 
+double E1(double F) 
+{ 
+return (F-32) * 5 / 9.0; 
+} 
+double E2(double C) 
+{ 
+return (9.0/5) * C + 32; 
+} 
+//第七選單模組 
+double A7(double w, double h) 
+{ 
+return (w / pow(h ,2)); 
+} 
+//第九選單模組 
+double A9(double M,double C) 
+{
+return M*pow(C, 2); 
+} 
+//第十一選單模組 
+double A11 (int n) 
+{ 
+///找n的所有正因數 
+ cout << n << "的因數: " << endl; 
+ ///檢驗變數x是否為n的因數 
+ for (int x =1; x <= n ; x++)  { 
+ if ( n % x == 0) 
+ { 
+ cout << x <<" " ; /// 印出因數  } 
+ } 
+ return n; 
+} 
+//定義主程式 
+int main() 
+{ 
+ welcome(); 
+ menu(); 
+double A; 
+while(cin >> A) 
+{ 
+if(A==1) 
+ { 
+ A1();
+ int B; 
+ cin>>B; 
+ if(B==1) 
+ { 
+ double a; 
+ cout<<"請輸入正方形的邊長:"; 
+ cin>>a; 
+ cout<<"面積為"<<b1(a)<<"平方單位"<<endl;  //正方形面積 
+ } 
+ else if(B==2) 
+ { 
+ double a; 
+ double b; 
+ cout <<"請依序輸入長與寬:"; 
+ cin >>a>>b; 
+ cout <<"面積為"<<b2(a,b)<<"平方單位"<<endl;  //長方形面積 
+ } 
+ else if(B==3) 
+ { 
+ double a; 
+ double b; 
+ cout<<"請依序輸入底與高:"; 
+ cin>>a>>b; 
+ cout<<"面積為"<<b3(a,b)<<"平方單位"<<endl; 
+ //三角形公式 
+ } 
+ else if(B==4) 
+ { 
+ double l; 
+ double s; 
+ double pi=3.14159625;
+ cout<<"請輸入橢圓的最短半徑:"; 
+ cin>>s; 
+ cout<<"請輸入橢圓的最長半徑:"; 
+ cin>>l; 
+ cout<<"橢圓面積為"<<b4(s,l,pi)<<"平方單位"<<endl; 
+ //橢圓形面積 
+ } 
+ else if(B==5) 
+ { 
+ double up; 
+ double down; 
+ double h; 
+ cout<<"請輸入上底與下底:"; 
+ cin>>up>>down; 
+ cout<<"請輸入高"; 
+ cin>>h; 
+ cout<<"梯形面積為"<<b5(up,down,h)<<"平方單位"<<endl;  //梯形面積 
+ } 
+ else if(B==6) 
+ { 
+ double r; 
+ double pi=3.14159625; 
+ cout<<"請輸入圓半徑:"; 
+ cin>>r; 
+ cout<<"圓面積為"<<b6(r,pi)<<"平方單位"<<endl; 
+ //圓面積 
+ } 
+ else if(B==7) 
+ { 
+ double r; 
+ double pi=3.14159625;
+ double q; 
+ cout<<"請輸入扇形半徑:"; 
+ cin>>r; 
+ cout<<"請輸入扇形角度:"; 
+ cin>>q; 
+ cout<<"扇形面積為"<<b7(r,pi,q)<<endl; 
+ //扇形面積 
+ } 
+ else 
+ {cout << "oops!you key in a wrong number!";}  } 
+else if(A ==2) 
+ { 
+ cout <<endl; 
+ cout<<"��平面座標距離計算器��"<<endl<<endl;  cout<<"請輸入兩點的x值與y值(順序為x1 y1 x2 y2)"<<endl; 
+ int x1; 
+ int y1; 
+ int x2; 
+ int y2; 
+ cin >>x1>>y1>>x2>>y2; 
+ cout<<"兩點距離為"<<A2(x1,y1,x2,y2)<<endl; 
+ } 
+else if(A == 3) 
+ { 
+ A3(); 
+ int C; 
+ cin >>C; 
+ if(C == 1 )
+ { 
+ cout<<"請依序輸入初速，加速度與時間"<<endl;  int v0; 
+ int a; 
+ int t; 
+ cin >>v0 >> a >> t ; 
+ cout << "末速為" <<C1(v0,a,t) << endl; 
+ } 
+ else if( C ==2) 
+ { 
+ int v; 
+ int v0; 
+ int t; 
+ cout << "請依序輸入初速，末速與時間"<<endl;  cin >> v >> v0 >> t; 
+ cout << "位移為"<< C2(v,v0,t)<<endl;  } 
+ else if( C ==3) 
+ { 
+ int v; 
+ int v0; 
+ int t; 
+ cout <<"請依序輸入末速，初速與時間"<<endl;  cin>>v>>v0>>t; 
+ cout <<"加速度為" <<C3(v,v0,t)<<endl;  } 
+ else if (C ==4) 
+ { 
+ int v; 
+ int v0; 
+ int a; 
+ cout <<"請依序輸入末速，初速與加速度"<<endl;  cin>>v>>v0>>a; 
+ cout <<"時間為" <<C4(v,v0,a)<<endl;  }
+ else 
+ {cout << "oops!you key in a wrong number!";}  } 
+ else if(A ==4) 
+ { 
+ cout << endl <<"��熱量計算器��"<<endl;  { 
+ int m; 
+ int s; 
+ int dt; 
+ cout <<"請依序輸入物體質量，比熱及溫度變化量"<<endl;  cin >> m >> s >> dt; 
+ cout <<"熱量為" << A4(m,s,dt); 
+ } 
+ } 
+ else if(A ==5) 
+ { 
+ A5(); 
+ int D; 
+ cin >> D ; 
+ if(D ==1) 
+ { 
+ int m; 
+ int a; 
+ cout <<"請依序輸入質量和加速度"<<endl;  cin>>m>>a; 
+ cout <<"力為" <<D1(m,a)<< endl; 
+ } 
+ if(D ==2) 
+ { 
+ int f; 
+ int a; 
+ cout <<"請依序輸入力和加速度"<<endl;
+ cin>>f>>a; 
+ cout <<"質量為"<<D2(f,a)<< endl; 
+ } 
+ if(D ==3) 
+ { 
+ int f; 
+ int m; 
+ cout <<"請依序輸入質量和力"<<endl; 
+ cin>>m>>f; 
+ cout <<"加速度為"<<D3(f,m) << endl;  } 
+ else 
+ {cout << "oops!you key in a wrong number!";}  } 
+ else if(A ==6) 
+ { 
+ A6(); 
+ int E; 
+ cin >> E; 
+ if(E ==1) 
+ { 
+ double F; 
+ cout << "請輸入華氏溫標" ; 
+ cin >> F; 
+ cout << "攝氏溫標為" << E1(F) << endl;  } 
+ else if(E ==2) 
+ { 
+ double C; 
+ cout << "請輸入攝氏溫標"; 
+ cin >> C;
+ cout << "華氏溫標為" << E2(C) << "度" << endl; 
+ } 
+ else 
+ {cout << "oops!you key in a wrong number!";}  } 
+ else if(A==7) 
+ { 
+ int w; 
+ double h; 
+ cout<<endl; 
+ cout<<"��BMI計算器��"<<endl<<endl; 
+ cout<<"請輸入你的體重(公斤) 身高(公尺)"<<endl;  cout<< "please tell me your weight(kg) and height(m)'3'";  cout<< endl ; 
+ cin >> w >> h; 
+ cout << "your BMI is " << A7(w,h)<<endl ; 
+ if ( A7(w,h) < 18.5) 
+ { 
+ cout << "你的體重過輕，大小熱是你很好的朋友^o^" << endl ;  } 
+ else if( A7(w,h)>=18.5 && A7(w,h)< 24) 
+ { 
+ cout << "你的體重適中，請繼續維持喔*^-^*" << endl ;  } 
+ else if( A7(w,h) >= 24) 
+ { 
+ cout << "你的體重過重囉......不要常常跑大小熱喇-_-" <<endl ;  } 
+ } 
+ else if(A ==8) 
+ {
+ int n; 
+ cout <<"請輸入你想從1加到幾??"<<endl;  cin >>n; 
+ double sum =0; 
+ for ( int i =1;i <=n ;i++)  { 
+ sum=sum+i ; 
+ } 
+ cout << "總合為"<<sum << endl ;  } 
+ else if(A==9) 
+ { 
+ double M, C; 
+ cout << "請輸入質量:"; 
+ cin >> M; 
+ C = 3*pow(10.0, 8.0); 
+ cout << "E=" << A9(M,C); 
+ } 
+ else if(A==10) 
+ { 
+ int n; 
+ int score[105]; 
+ int maxs; //最高 
+ int mins; //最低 
+ double mean; //平均 
+ int max_i; 
+ int min_i; 
+ //輸入人數n 
+ cout <<endl; 
+ cout<<"��成績計算器��"; 
+ cout<<endl<<"請輸入全班的人數:";
+ cin >> n; 
+ //輸入n個人的成績 
+ cout <<"請輸入全班的成績:"<<endl; 
+ for(int i = 1;i<=n;i++) 
+ { 
+ cin >>score[i]; 
+ } 
+//全班成績的最高分、最低分、平均分與標準差 
+ maxs = 0; 
+ mins = 100; 
+for(int i = 1; i <=n ; i++) 
+ { 
+ if(score[i]>maxs) 
+ { 
+ maxs = score[i]; 
+ max_i=i; 
+ } 
+ if(score[i]<mins) 
+ { 
+ mins =score[i]; 
+ min_i =i; 
+ } 
+ } 
+ cout <<"��最高分:" << maxs <<"\n" << "��最低分:"<<mins <<endl ; double sum = 0; 
+for(int i = 1;i <= n ; i++) 
+ { 
+ sum =sum + score[i]; 
+ } 
+mean=sum / n; 
+//sd 
+double ss =0;
+double sd ; 
+for(int i =1 ; i <+n ; i++) 
+{ 
+ ss += pow(score[i]-mean,2); 
+} 
+sd = sqrt(ss/n); 
+cout <<"��平均分:"<<mean<< "\n"<< "��標準差" << sd << endl ; } 
+else if(A==11) 
+ { 
+ int n; 
+ cout<<endl<<"��因數計算器��"<<endl; 
+ cout<<"請輸入你想檢驗的數:"; 
+ cin>>n; 
+ A11(n); 
+ } 
+ else 
+ { 
+ cout<<"�� thank for your using ��"<<endl; 
+ } 
+} 
+return 0; 
+}
